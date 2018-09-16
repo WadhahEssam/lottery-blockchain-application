@@ -1,0 +1,18 @@
+{
+  "name": "lottery-blockchain-application",
+  "version": "0.0.1",
+  "description": "ethereum blockchain based application, where users can enter by sunmittin amount of ether, and then the lottery samrt conract will choose a winner to give the ether to him",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "ganache-cli": "^6.1.8",
+    "mocha": "^5.2.0",
+    "solc": "^0.4.24",
+    "truffle-hdwallet-provider": "0.0.3",
+    "web3": "^1.0.0-beta.26"
+  }
+}
