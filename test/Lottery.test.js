@@ -39,6 +39,7 @@ describe('Lottery Contract', () => {
   });
 
   it('allows player1 to participate', async () => {
+    // getBalance function can be called on account or could be also called on account or could be called on contract too
     player1InitialBalance = await web3.eth.getBalance(player1);
     await lotteryContract.methods.enter().send({ from: player1, value: player1Amount });
     const contractPlayer1 = await lotteryContract.methods.players(0).call();
@@ -96,16 +97,16 @@ describe('Lottery Contract', () => {
     assert(true);
   });
 
+  it('sends the winner his prize', async () => {
+    const player1Balance = await web3.eth.getBalance(player1);
+    assert( player1FinalBalance > player1InitialBalance || player2FinalBalance > player2InitialBalance || player3FinalBalance > player3InitialBalance );
+  });
+
   it('should reset the contract', async () => {
     const numberOfPlayers = await lotteryContract.methods.getNumberOfPlayers().call();
     assert.equal(0, numberOfPlayers);
     const weiAmountInContract = await lotteryContract.methods.getAvailableWei().call();
     assert.equal(0, parseInt(weiAmountInContract));
-  });
-
-  it('sends the winner his prize', async () => {
-    const player1Balance = await web3.eth.getBalance(player1);
-    assert( player1FinalBalance > player1InitialBalance || player2FinalBalance > player2InitialBalance || player3FinalBalance > player3InitialBalance );
   });
 
 }); 
